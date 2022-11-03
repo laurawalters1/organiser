@@ -1,8 +1,11 @@
 import React from 'react'
 
-function SignupForm() {
+const SignupForm = () => {
   return (
-    <div>SignupForm</div>
+    <>
+    <h1>Signup</h1>
+
+    </>
   )
 }
 
