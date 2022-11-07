@@ -47,15 +47,27 @@ const SignupForm = () => {
     }
 
   return (
-    <>
-    <h1>Signup</h1>
-    <form action="" onSubmit={handleFormSubmit} >
-        <input type="text" placeholder='username' onChange={handleUserInput} name='username' />
-        <input type="email" placeholder='email' onChange={handleUserInput} name='email' />
-        <input type="password" placeholder='password' name='password' onChange={handleUserInput}/>
-        <button>Submit</button>
+    <div className='bg-light d-flex flex-column w-25 align-items-center'>
+    <h1 className='my-4'>Signup</h1>
+    <form action="" onSubmit={handleFormSubmit} className="d-flex flex-column w-75 justify-content-center align-items-center">
+        {/* <input type="text" placeholder='username' onChange={handleUserInput} name='username' className='my-2'/> */}
+        <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInputUsername" name='username' onChange={handleUserInput} placeholder="example1"/>
+        <label for="floatingInputUsername">Username</label>
+        </div>
+        {/* <input type="email" placeholder='email' onChange={handleUserInput} name='email' className='my-2'/> */}
+        <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInputEmail" name='email' onChange={handleUserInput} placeholder="name@example.com"/>
+        <label for="floatingInputEmail">Email</label>
+        </div>
+        {/* <input type="password" placeholder='password' name='password' onChange={handleUserInput} className='my-2'/> */}
+        <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingInputPassword" name='password' onChange={handleUserInput} placeholder="password"/>
+        <label for="floatingInputPassword">Password</label>
+        </div>
+        <button className='my-4 btn btn-outline-secondary '>Submit</button>
     </form>
-    </>
+    </div>
   )
 }
 
