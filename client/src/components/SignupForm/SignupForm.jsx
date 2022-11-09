@@ -47,7 +47,7 @@ const SignupForm = () => {
     }
 
   return (
-    <div className='bg-light d-flex flex-column w-25 align-items-center'>
+    <div className='bg-light d-flex flex-column col-lg-4 col-8 align-items-center'>
     <h1 className='my-4'>Signup</h1>
     <form action="" onSubmit={handleFormSubmit} className="d-flex flex-column w-75 justify-content-center align-items-center">
         {/* <input type="text" placeholder='username' onChange={handleUserInput} name='username' className='my-2'/> */}

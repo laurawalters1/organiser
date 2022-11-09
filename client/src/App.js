@@ -17,6 +17,7 @@ import {
   HttpLink,
 } from "@apollo/client";
 import { Signup, Login, Home, Dashboard } from "./pages";
+import Auth from "./utils/auth";
 
 // http link
 // const httpLink = createHttpLink({
@@ -53,10 +54,14 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={Auth.loggedIn() ? <Dashboard /> : <Home />}
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/home" element={<Home />} />
           </Routes>
         </Router>
       </ApolloProvider>
