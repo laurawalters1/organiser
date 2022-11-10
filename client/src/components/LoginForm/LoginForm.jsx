@@ -46,8 +46,8 @@ function LoginForm() {
     }
 
   return (
-    <div className='bg-light d-flex flex-column w-25 align-items-center'>
-    <h1 className='my-4'>Login</h1>
+    <div className='bg-light d-flex flex-column col-lg-3 col-8  align-items-center'>
+    <h2 className='my-4'>Login</h2>
     <form action="" onSubmit={handleFormSubmit} className="d-flex flex-column w-75 justify-content-center align-items-center">
         {/* <input type="email" placeholder='email' onChange={handleUserInput} name='email' />
         <input type="password" placeholder='password' name='password' onChange={handleUserInput}/> */}
@@ -62,7 +62,7 @@ function LoginForm() {
         <input type="password" class="form-control" id="floatingInputPassword" name='password' onChange={handleUserInput} placeholder="password"/>
         <label for="floatingInputPassword">Password</label>
         </div>
-        <button className='my-4 btn btn-outline-secondary '>Submit</button>
+        <button className='my-4 custom-btn-outline-brand'>Submit</button>
     </form>
     </div>
   )

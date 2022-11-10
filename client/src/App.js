@@ -18,6 +18,7 @@ import {
 } from "@apollo/client";
 import { Signup, Login, Home, Dashboard } from "./pages";
 import Auth from "./utils/auth";
+import Provisuo from "./assets/Provisuo.png";
 
 // http link
 // const httpLink = createHttpLink({
@@ -52,6 +53,9 @@ function App() {
   return (
     <div className="App">
       <ApolloProvider client={client}>
+        <header className="mt-5">
+          <img src={Provisuo} alt="Provisuo" className="col-8 col-md-3" />
+        </header>
         <Router>
           <Routes>
             <Route

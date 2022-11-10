@@ -48,7 +48,7 @@ const SignupForm = () => {
 
   return (
     <div className='bg-light d-flex flex-column col-lg-4 col-8 align-items-center'>
-    <h1 className='my-4'>Signup</h1>
+    <h2 className='my-4'>Signup</h2>
     <form action="" onSubmit={handleFormSubmit} className="d-flex flex-column w-75 justify-content-center align-items-center">
         {/* <input type="text" placeholder='username' onChange={handleUserInput} name='username' className='my-2'/> */}
         <div class="form-floating mb-3">
@@ -65,7 +65,7 @@ const SignupForm = () => {
         <input type="password" class="form-control" id="floatingInputPassword" name='password' onChange={handleUserInput} placeholder="password"/>
         <label for="floatingInputPassword">Password</label>
         </div>
-        <button className='my-4 btn btn-outline-secondary '>Submit</button>
+        <button className='my-4 custom-btn-outline-brand '>Submit</button>
     </form>
     </div>
   )
