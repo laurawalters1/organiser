@@ -4,8 +4,10 @@ import { RichTextEditor } from '../../components'
 // mutations/queries
 import { ADD_TODO } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { TodoState } from '../../context/TodoProvider';
 
-function AddTodoForm() {
+function AddTodoForm({closeForm}) {
+    const { todos, setTodos } = TodoState();
    const [addTodo, {error}] = useMutation(ADD_TODO)
    const [todoFormData, setTodoFormData] = useState({
     title: '',
@@ -23,11 +25,22 @@ function AddTodoForm() {
    const onFormSubmit = async (e) =>{
     e.preventDefault()
     try {
-        console.log(todoFormData)
+       
       const { data } = await addTodo({
         variables: { ...todoFormData },
       });
-     console.log(data)
+
+      setTodos(data.addTodo.todos)
+      console.log("setTodos", data.addTodo.todos)
+      
+     
+     setTodoFormData({
+        title: '',
+        description: '',
+        status: false,
+     })
+     closeForm()
+
     } catch (err) {
       alert(err);
     }
@@ -37,12 +50,12 @@ function AddTodoForm() {
          {/* <h2 className='mb-3'>New Task</h2> */}
          <div className=" mb-3">
             
-        <input type="text" className="form-control col-12" id="floatingInputEmail" name='title' placeholder="Title" onChange={handleUserInput}/>
+        <input type="text" value={todoFormData.title} className="form-control col-12" id="floatingInputEmail" name='title' placeholder="Title" onChange={handleUserInput}/>
  
         </div>
 
 
-       <textarea name="description" id="desc" cols="30" rows="10" onChange={handleUserInput}></textarea>
+       <textarea name="description" value={todoFormData.description} id="desc" cols="30" rows="10" onChange={handleUserInput}></textarea>
        
        {/* <RichTextEditor ></RichTextEditor> */}
 

@@ -1,5 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
+// provider
+import TodoProvider from "./context/TodoProvider";
 // router
 import {
   BrowserRouter as Router,
@@ -53,21 +55,23 @@ function App() {
   return (
     <div className="App">
       <ApolloProvider client={client}>
-        <header className="mt-5">
-          <img src={Provisuo} alt="Provisuo" className="col-8 col-md-3" />
-        </header>
-        <Router>
-          <Routes>
-            <Route
-              path="/"
-              element={Auth.loggedIn() ? <Dashboard /> : <Home />}
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/home" element={<Home />} />
-          </Routes>
-        </Router>
+        <TodoProvider>
+          <header className="mt-5">
+            <img src={Provisuo} alt="Provisuo" className="col-8 col-md-3" />
+          </header>
+          <Router>
+            <Routes>
+              <Route
+                path="/"
+                element={Auth.loggedIn() ? <Dashboard /> : <Home />}
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/home" element={<Home />} />
+            </Routes>
+          </Router>
+        </TodoProvider>
       </ApolloProvider>
     </div>
   );

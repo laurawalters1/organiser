@@ -34,6 +34,8 @@ export const ADD_TODO = gql`
       username
       todos {
         title
+        description
+        status
       }
     }
   }

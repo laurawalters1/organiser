@@ -11,10 +11,10 @@ function Dashboard() {
     // Execute the query on component load
   const { loading, data, error } = useQuery(GET_ME);
   const me = data?.me || [];
-  console.log(me)
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+  if(!loading){
   return (
       <div className='d-flex flex-column align-items-center'>
         <Button  variant="primary" onClick={handleShow} className="custom-btn-outline-brand-invert mt-5">Add Task</Button> 
@@ -23,7 +23,7 @@ function Dashboard() {
             <h2 className=''>New Task</h2> 
             </Modal.Header>
             <Modal.Body>
-            <AddTodoForm></AddTodoForm>
+            <AddTodoForm closeForm={handleClose}></AddTodoForm>
             </Modal.Body>
             <Modal.Footer>
           <Button variant="secondary" onClick={handleClose} className="custom-btn-outline-brand">
@@ -32,9 +32,10 @@ function Dashboard() {
         </Modal.Footer>
         </Modal>
 
-        <TodoList todos={me.todos}></TodoList>
+        <TodoList ></TodoList>
     </div>
   )
+  }
 }
 
 export default Dashboard
