@@ -18,6 +18,7 @@ const typeDefs = gql`
     title: String!
     description: String
     status: Boolean!
+    _id: ID!
   }
 
   type Query {
