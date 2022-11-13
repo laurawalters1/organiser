@@ -6,7 +6,12 @@ const { User, Todo } = require("../models");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      return "hello";
+      const user = User.findById(context.user._id);
+
+      return user.populate({
+        path: "todos",
+        model: "Todo",
+      });
     },
   },
   Mutation: {

@@ -38,3 +38,21 @@ code {
   transform: scale(1.08);
   transition: ease 100ms;
 }
+
+.custom-btn-outline-brand-invert {
+  border-color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: var(--brand);
+  color: white;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.custom-btn-outline-brand-invert:hover {
+  background-color: white;
+  color: var(--brand);
+  transform: scale(1.08);
+  transition: ease 100ms;
+}
