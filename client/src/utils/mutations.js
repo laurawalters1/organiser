@@ -36,6 +36,7 @@ export const ADD_TODO = gql`
         title
         description
         status
+        _id
       }
     }
   }
