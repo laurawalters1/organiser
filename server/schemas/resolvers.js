@@ -42,7 +42,21 @@ const resolvers = {
 
     addTodo: async (parent, args, context) => {
       const todo = await Todo.create(args);
-      return todo;
+      const user = User.findByIdAndUpdate(
+        { _id: context.user._id },
+        {
+          $addToSet: {
+            todos: todo._id,
+          },
+        },
+
+        { new: true, runValidators: true }
+      );
+
+      return user.populate({
+        path: "todos",
+        model: "Todo",
+      });
     },
   },
 };

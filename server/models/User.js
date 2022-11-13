@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const moment = require("moment");
+const { Todo } = require(".");
 
 const userSchema = new Schema(
   {
@@ -28,6 +29,12 @@ const userSchema = new Schema(
       required: true,
       // match? maybe add a regex here to ensure password strength?
     },
+    todos: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Todo",
+      },
+    ],
   },
   {
     toJSON: {
