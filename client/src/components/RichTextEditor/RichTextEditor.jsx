@@ -2,7 +2,7 @@ import './RichTextEditor.css'
 import '../../../node_modules/draft-js/dist/Draft.css'
 import React from "react";
 import Draft from 'draft-js'
-const {Editor, EditorState, RichUtils, getDefaultKeyBinding} = Draft;
+const {Editor, EditorState, RichUtils, getDefaultKeyBinding, convertToRaw, draftToHtml, convertFromRaw} = Draft;
 
 
 class RichTextEditor extends React.Component {
@@ -11,13 +11,32 @@ class RichTextEditor extends React.Component {
       this.state = {editorState: EditorState.createEmpty()};
 
       this.focus = () => this.refs.editor.focus();
-      this.onChange = (editorState) => this.setState({editorState});
-
+      this.convertToRaw = () => {
+        this.setState({ convertedContent: convertToRaw(this.state.editorState.getCurrentContent()) });
+      }
+      this.onChange = (editorState) => {
+ 
+        const { blocks } = convertToRaw(editorState.getCurrentContent());
+        const mappedBlocks = blocks.map(
+        block => (!block.text.trim() && "\n") || block.text,
+        );
+  
+        console.log( mappedBlocks.reduce((acc, block) => {
+        let returned = acc;
+        if (block === "\n") returned += block;
+        else returned += `${block}\n`;
+        return returned;
+    }, ""));
+        
+        this.setState({editorState});
+      }
       this.handleKeyCommand = this._handleKeyCommand.bind(this);
       this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
       this.toggleBlockType = this._toggleBlockType.bind(this);
       this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     }
+
+    
 
     _handleKeyCommand(command, editorState) {
       const newState = RichUtils.handleKeyCommand(editorState, command);

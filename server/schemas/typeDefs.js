@@ -13,6 +13,12 @@ const typeDefs = gql`
     user: User
   }
 
+  type Todo {
+    title: String!
+    description: String
+    status: Boolean!
+  }
+
   type Query {
     me: String
   }
@@ -20,6 +26,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): UserAuth
     loginUser(email: String!, password: String!): UserAuth
+    addTodo(title: String!, description: String, status: Boolean!): Todo
   }
 `;
 

@@ -26,3 +26,14 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+// sign up user
+export const ADD_TODO = gql`
+  mutation addTodo($title: String!, $status: Boolean!, $description: String) {
+    addTodo(title: $title, status: $status, description: $description) {
+      description
+      status
+      title
+    }
+  }
+`;

@@ -1,7 +1,7 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { isConstValueNode } = require("graphql");
-const { User } = require("../models");
+const { User, Todo } = require("../models");
 
 const resolvers = {
   Query: {
@@ -34,6 +34,15 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    //////////////////////////////////////
+    //////////////TODO///////////////////
+    //////////////////////////////////////
+
+    addTodo: async (parent, args, context) => {
+      const todo = await Todo.create(args);
+      return todo;
     },
   },
 };
