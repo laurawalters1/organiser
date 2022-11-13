@@ -56,21 +56,23 @@ function App() {
     <div className="App">
       <ApolloProvider client={client}>
         <TodoProvider>
-          <header className="mt-5">
-            <img src={Provisuo} alt="Provisuo" className="col-8 col-md-3" />
-          </header>
-          <Router>
-            <Routes>
-              <Route
-                path="/"
-                element={Auth.loggedIn() ? <Dashboard /> : <Home />}
-              />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/home" element={<Home />} />
-            </Routes>
-          </Router>
+          <HashRouter>
+            <header className="mt-5">
+              <img src={Provisuo} alt="Provisuo" className="col-8 col-md-3" />
+            </header>
+            <Router>
+              <Routes>
+                <Route
+                  path="/"
+                  element={Auth.loggedIn() ? <Dashboard /> : <Home />}
+                />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/home" element={<Home />} />
+              </Routes>
+            </Router>
+          </HashRouter>
         </TodoProvider>
       </ApolloProvider>
     </div>
