@@ -40,3 +40,18 @@ export const ADD_TODO = gql`
     }
   }
 `;
+
+// sign up user
+export const COMPLETE_TODO = gql`
+  mutation completeTodo($taskId: ID!) {
+    completeTodo(taskId: $taskId) {
+      username
+      todos {
+        title
+        description
+        status
+        _id
+      }
+    }
+  }
+`;

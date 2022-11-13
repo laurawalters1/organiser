@@ -1,11 +1,29 @@
 import React from 'react'
+import { useMutation } from '@apollo/react-hooks';
 import { FaRegEye } from 'react-icons/fa';
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+// mutations/queries
+import { COMPLETE_TODO } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import { TodoState } from '../../context/TodoProvider';
 
 
-function Todo({title, description, id}) {
-    console.log(description)
+function Todo({title, description, id, status}) {
+    const { todos, setTodos } = TodoState();
+    const [completeTodo, {error}] = useMutation(COMPLETE_TODO)
+
+    const completeTask = async (e) =>{
+        const { data, loading } = await completeTodo({
+            variables: { taskId: e.target.getAttribute('task-id') },
+          })
+          if(!loading){
+              setTodos(data.completeTodo.todos)
+          }
+          
+          
+          
+    }
 
     const toggleTask = (e) =>{
         const thisId = e.target.getAttribute('data-id') || e.target.parentNode.parentNode.getAttribute('data-id')
@@ -25,9 +43,10 @@ function Todo({title, description, id}) {
   return (
     <div className='bg-light  col-12 m-3 p-4'>
      <div className='d-flex justify-content-between align-items-center'>
-    <h4>{title}</h4>
+   {status? <h4><s>{title} </s></h4> :<h4>{title}</h4> } 
+    
      <div>
-     <button className='btn btn-success m-2' ><AiOutlineCheck></AiOutlineCheck></button>
+     {!status && <button className='btn btn-success m-2' task-id={id} onClick={completeTask}><AiOutlineCheck></AiOutlineCheck></button> }
          <button className='btn btn-secondary' data-id={`${id}`} onClick={toggleTask}><FaRegEye className='' id={`view${id}`}></FaRegEye><AiOutlineClose id={`close${id}`}  className='d-none'></AiOutlineClose></button>
         {/* <button className='btn btn-danger m-2'><BsTrash></BsTrash></button> */}
         

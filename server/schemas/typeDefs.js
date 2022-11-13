@@ -29,6 +29,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): UserAuth
     loginUser(email: String!, password: String!): UserAuth
     addTodo(title: String!, description: String, status: Boolean!): User
+    completeTodo(taskId: ID!): User
   }
 `;
 

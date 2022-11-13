@@ -63,6 +63,21 @@ const resolvers = {
         model: "Todo",
       });
     },
+
+    completeTodo: async (parent, { taskId }, context) => {
+      const todo = await Todo.findByIdAndUpdate(
+        { _id: taskId },
+        { status: true },
+        { new: true, runValidators: true }
+      );
+
+      const user = User.findById(context.user._id);
+
+      return user.populate({
+        path: "todos",
+        model: "Todo",
+      });
+    },
   },
 };
 module.exports = resolvers;

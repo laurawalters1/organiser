@@ -10,7 +10,7 @@ console.log("todos from state", todos)
 if(todos){
   return (
     <div className='col-4'>
-        {todos.map((todo)=><Todo  title={todo.title} description={todo.description} id={todo._id}></Todo>)}
+        {todos.map((todo)=><Todo  title={todo.title} description={todo.description} status={todo.status} id={todo._id}></Todo>)}
     </div>
   )
 }
