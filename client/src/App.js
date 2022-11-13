@@ -59,7 +59,7 @@ function App() {
           <header className="mt-5">
             <img src={Provisuo} alt="Provisuo" className="col-8 col-md-3" />
           </header>
-          <HashRouter>
+          <Router>
             <Routes>
               <Route
                 path="/"
@@ -70,7 +70,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/home" element={<Home />} />
             </Routes>
-          </HashRouter>
+          </Router>
         </TodoProvider>
       </ApolloProvider>
     </div>
