@@ -17,7 +17,8 @@ function Dashboard() {
   if(!loading){
   return (
       <div className='d-flex flex-column align-items-center'>
-        <Button  variant="primary" onClick={handleShow} className="custom-btn-outline-brand-invert mt-5">Add Task</Button> 
+          <h3 className='text-white mt-5'>Hi {me.username}!</h3>
+        <Button  variant="primary" onClick={handleShow} className="custom-btn-outline-brand-invert my-4">Add Task</Button> 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header>
             <h2 className=''>New Task</h2> 
