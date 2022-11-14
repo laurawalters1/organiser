@@ -39,6 +39,13 @@ code {
   transition: ease 100ms;
 }
 
+.custom-btn-outline-brand:active {
+  background-color: var(--brand);
+  color: white;
+  transform: scale(1.08);
+  transition: ease 100ms;
+}
+
 .custom-btn-outline-brand-invert {
   border-color: white;
   border: 1px solid;
@@ -51,6 +58,13 @@ code {
 }
 
 .custom-btn-outline-brand-invert:hover {
+  background-color: white;
+  color: var(--brand);
+  transform: scale(1.08);
+  transition: ease 100ms;
+}
+
+.custom-btn-outline-brand-invert:active {
   background-color: white;
   color: var(--brand);
   transform: scale(1.08);
