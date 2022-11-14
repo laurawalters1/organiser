@@ -37,6 +37,8 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
   db.once("open", () => {
     server.listen(PORT, () => {
+      console.log("process.env.MONGODB_URI", process.env.MONGODB_URI);
+      console.log("process.env", process.env);
       console.log(`API server running on port ${PORT}!`);
       console.log(
         `Use GraphQL at http://localhost:${PORT}${apolloServer.graphqlPath}`
