@@ -1,10 +1,10 @@
 import React from 'react'
 import { useMutation } from '@apollo/react-hooks';
-import { FaRegEye } from 'react-icons/fa';
+import { FaRegEye, FaTrash } from 'react-icons/fa';
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 // mutations/queries
-import { COMPLETE_TODO } from '../../utils/mutations';
+import { COMPLETE_TODO, DELETE_TODO } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { TodoState } from '../../context/TodoProvider';
 
@@ -12,11 +12,13 @@ import { TodoState } from '../../context/TodoProvider';
 function Todo({title, description, id, status}) {
     const { todos, setTodos } = TodoState();
     const [completeTodo, {error}] = useMutation(COMPLETE_TODO)
+    const [deleteTodo, {err}] = useMutation(DELETE_TODO)
 
     const completeTask = async (e) =>{
         const { data, loading } = await completeTodo({
             variables: { taskId: e.target.getAttribute('task-id') },
           })
+          
           if(!loading){
               setTodos(data.completeTodo.todos)
           }
@@ -40,10 +42,20 @@ function Todo({title, description, id, status}) {
         view.classList.remove('d-none')
         }
     }
+
+    const handleDelete = async (e)=>{
+        console.log(e.target.getAttribute('task-id'))
+        const { data, loading } = await deleteTodo({
+            variables: { taskId: e.target.getAttribute('task-id') },
+          })
+          if(!loading){
+              setTodos(data.deleteTodo.todos)
+          }
+    }
   return (
     <div className='bg-light  col-12 m-3 p-4'>
      <div className='d-flex justify-content-between align-items-center'>
-   {status? <h4><s>{title} </s></h4> :<h4>{title}</h4> } 
+   {status? <h5><s>{title} </s></h5> :<h5>{title}</h5> } 
     
      <div>
      {!status && <button className='btn btn-success m-2' task-id={id} onClick={completeTask}><AiOutlineCheck></AiOutlineCheck></button> }
@@ -53,7 +65,7 @@ function Todo({title, description, id, status}) {
     </div>
     </div>
     <div>
-        <p id={`todo${id}`} className='d-none'>{description}</p>
+        <p id={`todo${id}`} className='d-none mt-3 '><div className='d-flex justify-content-between text-dark'><small className='mx-3'>{description}</small> <button onClick={handleDelete} task-id={id} className='btn btn-danger'><FaTrash></FaTrash></button></div></p>
     </div>
     </div>
   )

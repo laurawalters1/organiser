@@ -56,3 +56,17 @@ export const COMPLETE_TODO = gql`
     }
   }
 `;
+
+export const DELETE_TODO = gql`
+  mutation deleteTodo($taskId: ID!) {
+    deleteTodo(taskId: $taskId) {
+      username
+      todos {
+        title
+        description
+        status
+        _id
+      }
+    }
+  }
+`;

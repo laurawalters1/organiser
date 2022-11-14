@@ -78,6 +78,22 @@ const resolvers = {
         model: "Todo",
       });
     },
+
+    deleteTodo: async (parent, { taskId }, context) => {
+      const todo = await Todo.findByIdAndDelete({ _id: taskId });
+
+      const user = User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $pull: { todos: taskId } },
+        { new: true, runValidators: true }
+      );
+
+      return user.populate({
+        path: "todos",
+        model: "Todo",
+      });
+    },
   },
 };
+
 module.exports = resolvers;
