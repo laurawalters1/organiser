@@ -7,6 +7,7 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import { COMPLETE_TODO, DELETE_TODO } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { TodoState } from '../../context/TodoProvider';
+import './Todo.css'
 
 
 function Todo({title, description, id, status}) {
@@ -28,7 +29,9 @@ function Todo({title, description, id, status}) {
     }
 
     const toggleTask = (e) =>{
+        console.log(e.target)
         const thisId = e.target.getAttribute('data-id') || e.target.parentNode.parentNode.getAttribute('data-id')
+        console.log(thisId)
         const p = document.getElementById(`todo${thisId}`)
         const close = document.getElementById(`close${thisId}`)
         const view = document.getElementById(`view${thisId}`)
@@ -56,11 +59,30 @@ function Todo({title, description, id, status}) {
     <div>
     <div className='col-12  p-3 mt-4 '>
      <div className='d-flex justify-content-between align-items-center px-3'>
-   {status? <h5><s>{title} </s></h5> :<h5>{title}</h5> } 
+   {status? <h5 className='text-muted'><s>{title} </s></h5> :<h5>{title}</h5> } 
     
-     <div>
-     {!status && <button className='btn btn-success m-2' task-id={id} onClick={completeTask}><AiOutlineCheck></AiOutlineCheck></button> }
-         <button className='btn btn-secondary' data-id={`${id}`} onClick={toggleTask}><FaRegEye className='' id={`view${id}`}></FaRegEye><AiOutlineClose id={`close${id}`}  className='d-none'></AiOutlineClose></button>
+     <div className='d-flex align-items-center'>
+     {/* {!status && <input type='checkbox' className='btn btn-success m-2' task-id={id} onClick={completeTask}></input> } */}
+     <div className='container mx-3'>
+     {!status ? <div class="round">
+    <input type="checkbox" id="checkbox" task-id={id} onClick={completeTask} />
+    <label for="checkbox"></label>
+  </div> :
+  <div class="round">
+  <input type="checkbox" checked disabled id="checkbox" task-id={id} onClick={completeTask} />
+  <label for="checkbox"></label>
+</div>
+  }
+  </div>
+         {/* <button className='btn btn-secondary' data-id={`${id}`} onClick={toggleTask}><FaRegEye className='' id={`view${id}`}></FaRegEye><AiOutlineClose id={`close${id}`}  className='d-none'></AiOutlineClose></button> */}
+         <div>
+    <a href="#" data-id={id} >
+      <span className="bottom" data-id={id} id={`view${id}`} onClick={toggleTask} ></span>
+    </a>
+    <a href="#"   >
+      <span className="top d-none" data-id={id} id={`close${id}`} onClick={toggleTask} ></span>
+    </a>
+  </div>
         {/* <button className='btn btn-danger m-2'><BsTrash></BsTrash></button> */}
         
     </div>
