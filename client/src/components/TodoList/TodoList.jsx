@@ -9,7 +9,7 @@ function TodoList() {
 console.log("todos from state", todos)
 if(todos){
   return (
-    <div className='col-11 col-md-6 col-lg-4'>
+    <div className='col-11 col-md-6 col-lg-4 bg-light'>
         {todos.map((todo)=><Todo  title={todo.title} description={todo.description} status={todo.status} id={todo._id}></Todo>)}
     </div>
   )

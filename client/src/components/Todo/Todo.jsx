@@ -53,8 +53,9 @@ function Todo({title, description, id, status}) {
           }
     }
   return (
-    <div className='bg-light  col-12 m-3 p-4'>
-     <div className='d-flex justify-content-between align-items-center'>
+    <div>
+    <div className='col-12  p-3 mt-4 '>
+     <div className='d-flex justify-content-between align-items-center px-3'>
    {status? <h5><s>{title} </s></h5> :<h5>{title}</h5> } 
     
      <div>
@@ -64,9 +65,12 @@ function Todo({title, description, id, status}) {
         
     </div>
     </div>
-    <div>
-        <p id={`todo${id}`} className='d-none mt-3 '><div className='d-flex justify-content-between text-dark'><small className='mx-3'>{description}</small> <button onClick={handleDelete} task-id={id} className='btn btn-danger'><FaTrash></FaTrash></button></div></p>
+    <div className='px-5'>
+        <p id={`todo${id}`} className='d-none mt-3 '><div className='d-flex justify-content-between text-dark'><small className=''>{description}</small> <button onClick={handleDelete} task-id={id} className='btn btn-danger'><FaTrash></FaTrash></button></div></p>
     </div>
+    
+    </div>
+    <hr className='mx-4' />
     </div>
   )
 }

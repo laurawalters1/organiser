@@ -28,7 +28,7 @@ import Provisuo from "./assets/Provisuo.png";
 // });
 
 const link = new HttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:3001/graphql",
   // Additional options
 });
 // auth link

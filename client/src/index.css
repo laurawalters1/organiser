@@ -70,3 +70,9 @@ code {
   transform: scale(1.08);
   transition: ease 100ms;
 }
+
+.checkbox {
+  border: var(--brand) solid 3px;
+  border-radius: 5px;
+  background-color: white;
+}
