@@ -75,14 +75,25 @@ function Todo({title, description, id, status}) {
   }
   </div>
          {/* <button className='btn btn-secondary' data-id={`${id}`} onClick={toggleTask}><FaRegEye className='' id={`view${id}`}></FaRegEye><AiOutlineClose id={`close${id}`}  className='d-none'></AiOutlineClose></button> */}
-         <div>
-    <a href="#" data-id={id} >
+         {/* <div>
+    <a  data-id={id} >
       <span className="bottom" data-id={id} id={`view${id}`} onClick={toggleTask} ></span>
     </a>
-    <a href="#"   >
+    <a   >
       <span className="top d-none" data-id={id} id={`close${id}`} onClick={toggleTask} ></span>
     </a>
+  </div> */}
+  <div class="icon icon-3"  data-id={id} id={`view${id}`} onClick={toggleTask}>
+  <div class="arrow">
+    <div class="top-arrow"></div>
   </div>
+</div>
+
+<div class="icon icon-4" data-id={id} id={`close${id}`} onClick={toggleTask}>
+  <div class="arrow">
+    <div class="bottom-arrow"></div>
+  </div>
+</div>
         {/* <button className='btn btn-danger m-2'><BsTrash></BsTrash></button> */}
         
     </div>

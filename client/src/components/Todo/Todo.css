@@ -61,33 +61,10 @@ a:hover .right:after {
   border-right: 0.1em solid #e74c3c;
 }
 
-.left {
-  display: inline-block;
-  width: 4em;
-  height: 4em;
-  border: 0.5em solid #333;
-  border-radius: 50%;
-  margin-right: 1.5em;
-}
-
-.left:after {
-  content: "";
-  display: inline-block;
-  margin-top: 1.05em;
-  margin-left: 0.6em;
-  width: 1.4em;
-  height: 1.4em;
-  border-top: 0.5em solid #333;
-  border-right: 0.5em solid #333;
-  -moz-transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-}
-
 .top {
   display: inline-block;
-  width: 2em;
-  height: 2em;
+  width: 1.8em;
+  height: 1.9em;
   border: 0.1em solid #333;
   border-radius: 50%;
   margin-right: 0.75em;
@@ -96,9 +73,9 @@ a:hover .right:after {
 .top:after {
   content: "";
   display: inline-block;
-  margin-top: 0.8em;
-  width: 0.5em;
-  height: 0.5em;
+  margin-top: 0.75em;
+  width: 0.4em;
+  height: 0.4em;
   border-top: 0.1em solid #333;
   border-right: 0.1em solid #333;
   -moz-transform: rotate(-45deg);
@@ -108,8 +85,8 @@ a:hover .right:after {
 
 .bottom {
   display: inline-block;
-  width: 2em;
-  height: 2em;
+  width: 1.8em;
+  height: 1.8em;
   border: 0.1em solid #333;
   border-radius: 50%;
   margin-left: 0.75em;
@@ -118,35 +95,12 @@ a:hover .right:after {
 .bottom:after {
   content: "";
   display: inline-block;
-  margin-top: 0.6em;
-  width: 0.5em;
-  height: 0.5em;
+  margin-top: 0.35em;
+  width: 0.4em;
+  height: 0.4em;
   border-top: 0.1em solid #333;
   border-right: 0.1em solid #333;
   -moz-transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
-}
-
-.right {
-  display: inline-block;
-  width: 4em;
-  height: 4em;
-  border: 0.5em solid #333;
-  border-radius: 50%;
-  margin-left: 1.5em;
-}
-
-.right:after {
-  content: "";
-  display: inline-block;
-  margin-top: 1.05em;
-  margin-left: -0.6em;
-  width: 1.4em;
-  height: 1.4em;
-  border-top: 0.5em solid #333;
-  border-right: 0.5em solid #333;
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
 }
